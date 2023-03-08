@@ -7,7 +7,7 @@ const searchPokemon = async () => {
     try {
         const response = await fetch(URL + searchedPokemon);
         if (!response.ok) {
-            alert('The pokemon does not exist!!');
+            showError('The pokemon does not exist!!');
             return;
         }
         const data = await response.json();
@@ -25,6 +25,10 @@ const searchPokemon = async () => {
     } catch (error) {
         console.error(error);
     }
+}
+
+const showError = (msj) =>{
+    pokedexContainer.innerHTML = `<p>${msj}</p>`;
 }
 
 document.getElementById('btn-search').addEventListener('click', searchPokemon);
